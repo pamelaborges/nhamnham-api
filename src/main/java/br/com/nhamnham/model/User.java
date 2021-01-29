@@ -103,7 +103,7 @@ public class User extends PanacheMongoEntity {
        return find("{ username: ?1, password: ?2 }", username, Sha2Crypt.sha256Crypt(password.getBytes(), "$5$1")).firstResultOptional();
     }
 
-    public static Stream<User> findByEnterprise(Integer enterpriseId){
+    public static Stream<User> findByEnterprise(String enterpriseId){
         return find("enterprise_id", enterpriseId).stream();
     }
 

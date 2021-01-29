@@ -8,6 +8,8 @@ import br.com.nhamnham.resource.dto.AuthResponse;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.time.Instant;
+import java.time.temporal.TemporalAmount;
 
 @ApplicationScoped
 public class AuthService {
@@ -19,7 +21,7 @@ public class AuthService {
         final User user = User.findByUsernameAndPassword(request.getUsername(), request.getPassword())
                 .orElseThrow(()-> new AuthenticationException());
         final AuthResponse response = new AuthResponse();
-        final String tokenJWT = JWTTokenUtils.generate(user, issuer);
+        final String tokenJWT = JWTTokenUtils.generate(user, issuer, Instant.now().plusSeconds(1440));
         response.setToke(tokenJWT);
         return response;
     }
