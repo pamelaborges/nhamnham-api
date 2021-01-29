@@ -78,11 +78,6 @@
             <artifactId>quarkus-smallrye-jwt-build</artifactId>
         </dependency>
 
-        <dependency><!-- extensão de seguranca -->
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-security-jpa</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-openapi</artifactId>
@@ -93,7 +88,7 @@
             <artifactId>quarkus-panache-mock</artifactId>
         </dependency>
 
-        <dependency><!-- extensão do para mockar metodos staticos do panach -->
+        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5-mockito</artifactId>
         </dependency>
