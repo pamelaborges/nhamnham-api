@@ -55,4 +55,12 @@ public class EnterpriseResource {
         return Response.ok().build();
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("ADMIN")
+    @Operation(summary = "Lista as empresas cadastradas")
+    public Response list(@Context SecurityContext ctx, Enterprise enterprise){
+        return Response.ok(service.listAll()).build();
+    }
+
 }

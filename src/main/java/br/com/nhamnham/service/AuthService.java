@@ -12,8 +12,6 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class AuthService {
 
-    @ConfigProperty(name = "security.jwt.duration")
-    private Long duration;
     @ConfigProperty(name = "mp.jwt.verify.issuer")
     private String issuer;
 
@@ -21,7 +19,7 @@ public class AuthService {
         final User user = User.findByUsernameAndPassword(request.getUsername(), request.getPassword())
                 .orElseThrow(()-> new AuthenticationException());
         final AuthResponse response = new AuthResponse();
-        final String tokenJWT = JWTTokenUtils.generate(user, duration, issuer);
+        final String tokenJWT = JWTTokenUtils.generate(user, issuer);
         response.setToke(tokenJWT);
         return response;
     }
